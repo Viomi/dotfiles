@@ -1,20 +1,10 @@
-"|  \/  (_) |                        (_)
-"| .  . |_| | _____  ___   _ ____   ___ _ __ ___  _ __ ___
-"| |\/| | | |/ / _ \/ __| | '_ \ \ / / | '_ ` _ \| '__/ __|
-"| |  | | |   <  __/\__ \ | | | \ V /| | | | | | | | | (__
-"\_|  |_/_|_|\_\___||___/ |_| |_|\_/ |_|_| |_| |_|_|  \___|
-"
-" Author: Mike Hartington
-" repo  : https://github.com/mhartington/dotfiles/
-"
-
 " Setup dein  ---------------------------------------------------------------{{{
   if (!isdirectory(expand("$HOME/.config/nvim/repos/github.com/Shougo/dein.vim")))
     call system(expand("mkdir -p $HOME/.config/nvim/repos/github.com"))
     call system(expand("git clone https://github.com/Shougo/dein.vim $HOME/.config/nvim/repos/github.com/Shougo/dein.vim"))
   endif
 
-  set runtimepath+=~/.config/nvim/repos/github.com/Shougo/dein.vim/
+  set runtimepath+=~/.config/nvim/repos/github.com/Shougo/dein.vim
   call dein#begin(expand('~/.config/nvim'))
   call dein#add('Shougo/dein.vim')
   call dein#add('haya14busa/dein-command.vim')
@@ -51,7 +41,6 @@
   call dein#add('valloric/MatchTagAlways', {'on_ft': 'html'})
 
   " call dein#add('tpope/vim-fugitive')
-  call dein#add('lambdalisue/vim-gita')
   call dein#add('lambdalisue/gina.vim')
   " call dein#add('tpope/vim-rhubarb')
   call dein#add('jreybert/vimagit')
@@ -96,7 +85,7 @@
   " call dein#add('ujihisa/neco-look')
 
   " call dein#add('davidhalter/jedi-vim', {'on_ft': 'python'})
-  call dein#add('zchee/deoplete-jedi', {'on_ft': 'python'})
+	" call dein#add('zchee/deoplete-jedi', {'on_ft': 'python'})
 
   call dein#add('zchee/deoplete-zsh')
   call dein#add('Valodim/vim-zsh-completion')
@@ -362,10 +351,11 @@
 
 " Python --------------------------------------------------------------------{{{
 
+	" let g:python3_host_prog="/bin/python3.6"
   " let $NVIM_PYTHON_LOG_FILE="nvimpy.log"
   " let $NVIM_PYTHON_LOG_LEVEL='DEBUG'
-  let g:jedi#auto_vim_configuration = 0
-  let g:jedi#documentation_command = "<leader>k"
+  " let g:jedi#auto_vim_configuration = 0
+  " let g:jedi#documentation_command = "<leader>k"
 
 " }}}
 
@@ -876,6 +866,8 @@ let g:neosnippet#snippets_directory='~/.config/repos/github.com/Shougo/neosnippe
   endfunction
   command TsLintFix :call TsLintFix()
 "}}}
+
+
 
 let g:tagbar_type_typescript = {
   \ 'ctagstype': 'typescript',
