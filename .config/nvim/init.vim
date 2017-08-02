@@ -12,7 +12,10 @@
 
 
 " syntax
-  call dein#add('othree/html5.vim')
+  call dein#add('rust-lang/rust.vim')
+	call dein#add('cespare/vim-toml')
+
+	call dein#add('othree/html5.vim')
 
   call dein#add('othree/yajs.vim')
   call dein#add('othree/jspc.vim')
@@ -124,6 +127,9 @@
   " call dein#add('majutsushi/tagbar')
   call dein#add('ryanoasis/vim-devicons')
   call dein#add('tiagofumo/vim-nerdtree-syntax-highlight')
+
+	call dein#add('floobits/floobits-neovim')
+
   if dein#check_install()
     call dein#install()
     let pluginsExist=1
@@ -148,7 +154,8 @@
   set noswapfile
   filetype on
   set  number
-  set tabstop=2 shiftwidth=2 "expandtab
+  set tabstop=2
+	set shiftwidth=2
   set conceallevel=0
 " block select not limited by shortest line
   set virtualedit=
@@ -291,6 +298,13 @@
 " set background=light
 " highlight bad words in red
   " autocmd FileType ghmarkdown,markdown,text,html hi SpellBad guibg=#ff2929 guifg=#ffffff" ctermbg=224
+"}}}
+
+" Rust ----------------------------------------------------------------------{{{
+" yaay, rust stuff
+	let g:rust_recommended_style = 0
+	let g:rust_fold = 1
+
 "}}}
 
 " MarkDown ------------------------------------------------------------------{{{
