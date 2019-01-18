@@ -36,21 +36,15 @@ source $ZSH/oh-my-zsh.sh
 # export SSH_KEY_PATH="~/.ssh/dsa_id"
 
 # For a full list of active aliases, run `alias`.
-alias zshconfig="v ~/.zshrc"
-alias ohmyzsh="cd ~/.oh-my-zsh"
-
 alias pacinstall="sudo pacman -S"
 alias pacupdate="sudo pacman -Syu"
 alias pacremove="sudo pacman -R"
 alias pacremovedeps="sudo pacman -Rs"
 alias pacforceremove="sudo pacman -Rsc"
 alias pacpurge="sudo pacman -Sc"
-alias vibuild="makepkg -sri"
 
 alias vim="nvim"
 alias vi="nvim"
 alias v="nvim"
 
 alias ls="ls -A"
-
-alias mountwindows="sudo mount -t ntfs-3g /dev/sda2 /mnt/windows"
