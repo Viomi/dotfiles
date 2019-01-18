@@ -1,0 +1,685 @@
+priority -50
+
+
+snippet pr "Pragma LANGUAGE" w
+{-# LANGUAGE ${1:Foo} #-}
+endsnippet
+
+snippet po "Pragma OPTIONS_GHC" w
+{-# OPTIONS_GHC -${1:foo} #-}
+endsnippet
+
+snippet in "Pragma INLINE" w
+{-# INLINE ${1:foo} #-}
+endsnippet
+
+snippet ib "Pragma INLINEABLE" w
+{-# INLINEABLE ${1:foo} #-}
+endsnippet
+
+snippet ni "Pragma NOINLINE" w
+{-# NOINLINE ${1:foo} #-}
+endsnippet
+
+snippet so "Pragma SOURCE" w
+{-# SOURCE #-}
+endsnippet
+
+snippet up "Pragma UNPACK" w
+{-# UNPACK #-}
+endsnippet
+
+snippet an "Pragma ANN" w
+{-# ANN ${1:foo} ${2:(Just "Foo")} #-}
+endsnippet
+
+snippet at "Pragma ANN type" w
+{-# ANN type ${1:Foo} ${2:(Just "Foo")} #-}
+endsnippet
+
+snippet am "Pragma ANN module" w
+{-# ANN module ${1:(Just "Foo")} #-}
+endsnippet
+
+snippet sp "Pragma SPECIALISE" w
+{-# SPECIALISE ${1:f} :: ${2:Int -> b -> b} #-}
+endsnippet
+
+snippet spu "Pragma SPECIALISE (unicode)" w
+{-# SPECIALISE ${1:f} ∷ ${2:Int → b → b} #-}
+endsnippet
+
+snippet spin "Pragma SPECIALISE INLINE" w
+{-# SPECIALISE INLINE ${1:f} :: ${2:Int -> b -> b} #-}
+endsnippet
+
+snippet spinu "Pragma SPECIALISE INLINE (unicode)" w
+{-# SPECIALISE INLINE ${1:f} ∷ ${2:Int → b → b} #-}
+endsnippet
+
+snippet spni "Pragma SPECIALISE NOINLINE" w
+{-# SPECIALISE NOINLINE ${1:f} :: ${2:Int -> b -> b} #-}
+endsnippet
+
+snippet spniu "Pragma SPECIALISE NOINLINE (unicode)" w
+{-# SPECIALISE NOINLINE ${1:f} ∷ ${2:Int → b → b} #-}
+endsnippet
+
+snippet ln "Pragma LINE" w
+{-# LINE ${1:42} "${2:Foo.vhs}" #-}
+endsnippet
+
+snippet dp "Pragma DEPRECATED" w
+{-# DEPRECATED "${1:Don't use these}" #-}
+endsnippet
+
+snippet wr "Pragma WARNING" w
+{-# WARNING ${1:unsafePerformIO} "${2:This is unsafe}" #-}
+endsnippet
+
+
+# see for `Data.Function` from `base` package since 4.9.0.0
+snippet (&) "Declare pipe version of ($) operator" w
+(&) :: a -> (a -> b) -> b
+(&) = flip ($)
+infixl 1 &
+endsnippet
+
+snippet u(&) "Declare pipe version of ($) operator (unicode)" w
+(&) ∷ a → (a → b) → b
+(&) = flip ($)
+infixl 1 &
+endsnippet
+
+snippet (.>) "Declare pipe version of (.) operator" w
+(.>) :: (a -> b) -> (b -> c) -> a -> c
+(.>) = flip (.)
+infixl 9 .>
+endsnippet
+
+snippet "(u\(.>\)|\(∘>\))" "Declare pipe version of (∘) Unicode operator (∘>)" r
+(∘>) ∷ (a → b) → (b → c) → a → c
+(∘>) = flip (∘)
+infixl 9 ∘>
+endsnippet
+
+snippet (•) "Declare pipe version of (∘) Unicode operator (•)" w
+(•) ∷ (a → b) → (b → c) → a → c
+(•) = flip (∘)
+infixl 9 •
+endsnippet
+
+snippet (<&>) "Declare pipe version of <$> operator" w
+(<&>) :: Functor f => f a -> (a -> b) -> f b
+(<&>) = flip (<$>)
+infixr 5 <&>
+endsnippet
+
+snippet u(<&>) "Declare pipe version of <$> operator" w
+(<&>) ∷ Functor f ⇒ f a → (a → b) → f b
+(<&>) = flip (<$>)
+infixr 5 <&>
+endsnippet
+
+
+snippet u "undefined" w
+undefined
+endsnippet
+
+snippet r "return" w
+return ${1}
+endsnippet
+
+snippet p "pure" w
+pure ${1}
+endsnippet
+
+
+snippet t "type" w
+type ${1:Foo} = ${2:Bar}${3}
+endsnippet
+
+snippet d "data" w
+data ${1:Foo} = ${2:Foo}${3}
+endsnippet
+
+snippet dr "data (with deriving)" w
+data ${1:Foo} = ${2:Foo} deriving (${3:Show})${4}
+endsnippet
+
+snippet nt "newtype" w
+newtype ${1:Foo} = ${2:Foo}${3}
+endsnippet
+
+snippet ntr "newtype" w
+newtype ${1:Foo} = ${2:Foo} deriving (${3:Show})${4}
+endsnippet
+
+
+snippet i "import" w
+import ${1}
+endsnippet
+snippet i' "import (aligned by `qualified` keyword)" w
+import           ${1}
+endsnippet
+snippet pi "import (from explicit package)" w
+import "${1:base}" ${2}
+endsnippet
+
+snippet iq "qualified import" w
+import qualified ${1}
+endsnippet
+snippet piq "qualified import (from explicit package)" w
+import qualified "${1:base}" ${2}
+endsnippet
+
+snippet is "qualified import as" w
+import qualified ${1:Data.List} as ${2:L}
+endsnippet
+snippet pis "qualified import as (from explicit package)" w
+import qualified "${1:base}" ${2:Data.List} as ${3:L}
+endsnippet
+
+snippet ix "explicit import" w
+import ${1:Control.Monad} (${2:(>=>)})
+endsnippet
+snippet ix' "explicit import (aligned by `qualified` keyword)" w
+import           ${1:Control.Monad} (${2:(>=>)})
+endsnippet
+snippet pix "explicit import (from explicit package)" w
+import "${1:base}" ${2:Control.Monad} (${3:(>=>)})
+endsnippet
+
+
+snippet m "module" w
+module ${1:Main} where
+endsnippet
+
+snippet m- "module prefix" w
+module ${1}
+endsnippet
+
+snippet mx "module with explicit export" w
+module ${1:Main} (${2:main}) where
+endsnippet
+
+snippet mm "module with multiline explicit export" w
+module ${1:Foo}
+	( ${2:Bar}
+	) where
+endsnippet
+
+snippet mm' "module with multiline explicit export (aligned)" w
+module ${1:Foo}
+     ( ${2:Bar}
+     ) where
+endsnippet
+
+
+# wrapping name of the function to ${} doesn't make sense
+# becase we need to edit function name two times, let's
+# do it later.
+snippet f "declare a function" w
+f :: ${1:Foo}
+f = ${2:undefined}
+endsnippet
+
+snippet fu "declare a function (unicode)" w
+f ∷ ${1:Foo}
+f = ${2:undefined}
+endsnippet
+
+snippet la "declare a lambda" i
+\\${1:x} -> ${2:undefined}
+endsnippet
+
+snippet lu "declare a lambda (unicode)" i
+\\${1:x} → ${2:undefined}
+endsnippet
+
+snippet lb "declare a lambda wrapped to brackets" w
+(\\${1:x} -> ${2:undefined})
+endsnippet
+
+snippet lbu "declare a lambda wrapped to brackets (unicode)" w
+(\\${1:x} → ${2:undefined})
+endsnippet
+
+
+snippet main "main monad" w
+main :: IO ()
+main = ${1:undefined}
+endsnippet
+
+snippet mainu "main monad (unicode)" w
+main ∷ IO ()
+main = ${1:undefined}
+endsnippet
+
+
+snippet qq "quasi-quote" w
+[${1:foo}|${2:bar}|]${3}
+endsnippet
+
+snippet qm "qm interpolated string quasi-quote" w
+[qm| ${1:foo} |]${2}
+endsnippet
+
+snippet qn "qn multiline string quasi-quote" w
+[qn| ${1:foo} |]${2}
+endsnippet
+
+snippet qmb "qmb interpolated string quasi-quote" w
+[qmb| ${1:foo} |]${2}
+endsnippet
+
+snippet qnb "qnb multiline string quasi-quote" w
+[qnb| ${1:foo} |]${2}
+endsnippet
+
+snippet qms "qms interpolated string quasi-quote" w
+[qms| ${1:foo} |]${2}
+endsnippet
+
+snippet qns "qns multiline string quasi-quote" w
+[qns| ${1:foo} |]${2}
+endsnippet
+
+
+
+# UnicodeSyntax
+
+# Personal favorites
+# ∀ ¬ ∧ ∨ ≡ ≠ ≤ ≥ ∘ ∘> ∈ ∉ ∌ ∋
+
+
+# From the UnicodeSyntax extension
+snippet :: "Unicode :: = ∷" i
+∷ ${1}
+endsnippet
+snippet "(^|[^:]):" "Unicode : = ∷" r
+`!p snip.rv = match.group(1)`∷ ${1}
+endsnippet
+snippet => "Unicode => = ⇒" w
+⇒ ${1}
+endsnippet
+snippet forall "Unicode forall = ∀" w
+∀ ${1}
+endsnippet
+snippet A "Unicode A = ∀" w
+∀ ${1}
+endsnippet
+snippet -> "Unicode -> = →" w
+→ ${1}
+endsnippet
+snippet > "Unicode > = →" w
+→ ${1}
+endsnippet
+snippet <- "Unicode <- = ←" w
+← ${1}
+endsnippet
+snippet < "Unicode < = ←" w
+← ${1}
+endsnippet
+snippet >- "Unicode >- = ⤚" w
+⤚ ${1}
+endsnippet
+snippet -< "Unicode -< = ⤙" w
+⤙ ${1}
+endsnippet
+snippet -<< "Unicode -<< = ⤛" w
+⤛ ${1}
+endsnippet
+snippet >>- "Unicode >>- = ⤜" w
+⤜ ${1}
+endsnippet
+snippet *t "Unicode * = ★" w
+★ ${1}
+endsnippet
+
+
+# Own unicode operators
+snippet <> "Unicode <> = ⋄ (diamond operator)" i
+⋄ ${1}
+endsnippet
+
+
+# From the Prelude.Unicode module
+
+# Values
+snippet not "Unicode not = (¬)" w
+¬
+endsnippet
+snippet && "Unicode (&&) = (∧)" w
+∧ ${1}
+endsnippet
+snippet & "Unicode & = ∧" w
+∧ ${1}
+endsnippet
+snippet a "Unicode a = ∧" w
+∧ ${1}
+endsnippet
+snippet || "Unicode (||) = (∨)" w
+∨ ${1}
+endsnippet
+snippet | "Unicode | = ∨" w
+∨ ${1}
+endsnippet
+snippet o "Unicode o = ∨" w
+∨ ${1}
+endsnippet
+snippet "(^|[^/])==" "Unicode (==) = (≡)" r
+`!p snip.rv = match.group(1)`≡ ${1}
+endsnippet
+snippet "(^|[^=/><])=" "Unicode = to ≡" r
+`!p snip.rv = match.group(1)`≡ ${1}
+endsnippet
+snippet /= "Unicode (/=) = (≠)" i
+≠ ${1}
+endsnippet
+snippet /≡ "Unicode (/=) = (≢)" i
+≢
+endsnippet
+snippet /== "Unicode (/=) = (≢)" i
+≢ ${1}
+endsnippet
+snippet <= "Unicode <= = ≤" i
+≤ ${1}
+endsnippet
+snippet /> "Unicode <= = ≯" i
+≯ ${1}
+endsnippet
+snippet >= "Unicode >= = ≥" i
+≥ ${1}
+endsnippet
+snippet /< "Unicode >= = ≮" i
+≮ ${1}
+endsnippet
+snippet PI "Unicode pi = π" w
+π ${1}
+endsnippet
+snippet / "Unicode (/) = (÷)" i
+÷ ${1}
+endsnippet
+snippet * "Unicode (*) = (⋅)" i
+⋅ ${1}
+endsnippet
+snippet . "Unicode (.) = (∘)" i
+∘ ${1}
+endsnippet
+# my own
+snippet .> "Unicode (.>) = (∘>)" w
+∘> ${1}
+endsnippet
+snippet ++ "Unicode (++) = (⧺)" i
+⧺ ${1}
+endsnippet
+snippet "(^|[^\+])\+" "Unicode + = ⧺" r
+`!p snip.rv = match.group(1)`⧺ ${1}
+endsnippet
+snippet elem "Unicode elem = (∈)" w
+∈ ${1}
+endsnippet
+snippet "(^|[^/])E" "Unicode E = (∈)" r
+`!p snip.rv = match.group(1)`∈ ${1}
+endsnippet
+snippet notElem "Unicode notElem = (∉)" w
+∉ ${1}
+endsnippet
+snippet /E "Unicode /E = (∉)" w
+∉ ${1}
+endsnippet
+snippet E/ "Unicode E/ = (∉)" w
+∉ ${1}
+endsnippet
+snippet undefined "Unicode undefined = (⊥)" w
+⊥
+endsnippet
+
+# Types
+snippet Integer "Unicode Integer = ℤ" w
+ℤ ${1}
+endsnippet
+snippet Z "Unicode Z = ℤ" w
+ℤ ${1}
+endsnippet
+snippet Rational "Unicode Rational = ℚ" w
+ℚ ${1}
+endsnippet
+snippet Q "Unicode Q = ℚ" w
+ℚ ${1}
+endsnippet
+snippet Bool "Unicode Bool = 𝔹" w
+𝔹 ${1}
+endsnippet
+snippet B "Unicode B = 𝔹" w
+𝔹 ${1}
+endsnippet
+
+
+# From the Control.Applicative.Unicode module
+snippet <*> "Unicode (<*>) = (⊛)" w
+⊛
+endsnippet
+snippet empty "Unicode empty = (∅)" w
+∅
+endsnippet
+
+
+# From the Control.Arrow.Unicode module
+snippet >>> "Unicode (>>>) = (⋙)" w
+⋙
+endsnippet
+snippet <<< "Unicode (<<<) = (⋘)" w
+⋘
+endsnippet
+snippet *** "Unicode (***) = (⁂)" w
+⁂
+endsnippet
+snippet +++ "Unicode (+++) = (⧻)" w
+⧻
+endsnippet
+snippet ||| "Unicode (|||) = (⫴)" w
+⫴
+endsnippet
+
+
+# From the Control.Category.Unicode module
+# (.) = (∘)
+# (>>>) = (⋙)
+# (<<<) = (⋘)
+
+
+# From the Control.Monad.Unicode module
+snippet >>= "Unicode (>>=) = (≫=)" w
+≫=
+endsnippet
+snippet >> "Unicode (>>) = (≫)" w
+≫
+endsnippet
+snippet =<< "Unicode (=<<) = (=≪)" w
+=≪
+endsnippet
+
+
+# From the Data.Bool.Unicode module
+# (&&) = (∧)
+# (||) = (∨)
+# not = (¬)
+
+
+# From the Data.Eq.Unicode module
+# (==) = (≡)
+# (/=) = (≠) = (≢)
+
+
+# From the Data.Foldable.Unicode module
+# elem = (∈)
+# flip elem = (∋)
+snippet ∈ "Unicode flip elem = (∋)" i
+∋
+endsnippet
+snippet "(^|[^\/])3" "Unicode 3 = (∋)" r
+`!p snip.rv = match.group(1)`∋ ${1}
+endsnippet
+# notElem = (∉)
+# flip notElem = (∌)
+snippet ∉ "Unicode flip notElem = (∌)" i
+∌
+endsnippet
+snippet /3 "Unicode /3 = (∌)" i
+∌ ${1}
+endsnippet
+snippet 3/ "Unicode 3/ = (∌)" i
+∌ ${1}
+endsnippet
+
+
+# From the Data.Function.Unicode module
+# (.) = (∘)
+
+
+# From the Data.List.Unicode module
+# (++) = (⧺)
+# elem = (∈)
+# flip elem = (∋)
+# notElem = (∉)
+# flip notElem = (∌)
+snippet union "Unicode union = (∪)" w
+∪
+endsnippet
+snippet \\ "Unicode (\\) = (∖)" w
+∖
+endsnippet
+# \x y -> union (x \\ y) (y \\ x) = (∆)
+snippet intersect "Unicode intersect = (∩)" w
+∩
+endsnippet
+
+
+# From the Data.Monoid.Unicode module
+snippet mempty "Unicode mempty = (∅)" w
+∅
+endsnippet
+snippet mappend "Unicode mappend = (⊕)" w
+⊕
+endsnippet
+
+
+# From the Data.Ord.Unicode module
+# <= = ≤ = ≯
+# >= = ≥ = ≮
+
+
+
+# From the containers-unicode-symbols package
+
+
+# From the Data.Sequence.Unicode module
+# empty = (∅)
+snippet <| "Unicode (<|) = (⊲)" w
+⊲
+endsnippet
+snippet |> "Unicode (|>) = (⊳)" w
+⊳
+endsnippet
+snippet >< "Unicode (><) = (⋈)" w
+⋈
+endsnippet
+
+
+# From the Data.Set.Unicode module
+# member = (∈)
+# flip member = (∋)
+# notMember = (∉)
+# flip notMember = (∌)
+# empty = (∅)
+# union = (∪)
+snippet difference "Unicode difference = (∖)" w
+∖
+endsnippet
+# \x y -> union (difference x y) (difference y x) = (∆)
+snippet /\ "Unicode `union (difference x y) (difference y x)` = (∆)" w
+∆
+endsnippet
+# intersection = (∩)
+snippet isSubsetOf "Unicode isSubsetOf = (⊆)" w
+⊆
+endsnippet
+snippet ⊆ "Unicode flip isSubsetOf = (⊇)" w
+⊇
+endsnippet
+# \x y -> (x /= y) && not (isProperSubsetOf x y) = (⊈)
+# \x y -> (x /= y) && not (isProperSubsetOf y x) = (⊉)
+# isProperSubsetOf = (⊂)
+# flip isProperSubsetOf = (⊃)
+# \x y -> not (isProperSubsetOf x y) = (⊄)
+# \x y -> not (isProperSubsetOf y x) = (⊅)
+
+
+# From the Data.Map.Lazy.Unicode module (reexported by the Data.Map.Unicode module)
+# member = (∈)
+# flip member = (∋)
+# notMember = (∉)
+# flip notMember = (∌)
+# empty = (∅)
+# union = (∪)
+# difference = (∖)
+# \x y -> union (difference x y) (difference y x) = (∆)
+# intersection = (∩)
+
+
+# From the Data.Map.Strict.Unicode module
+# member = (∈)
+# flip member = (∋)
+# notMember = (∉)
+# flip notMember = (∌)
+# empty = (∅)
+# union = (∪)
+# difference = (∖)
+# \x y -> union (difference x y) (difference y x) = (∆)
+# intersection = (∩)
+
+
+# From the Data.IntSet.Unicode module
+# member = (∈)
+# flip member = (∋)
+# notMember = (∉)
+# flip notMember = (∌)
+# empty = (∅)
+# union = (∪)
+# difference = (∖)
+# \x y -> union (difference x y) (difference y x) = (∆)
+# intersection = (∩)
+# isSubsetOf = (⊆)
+# flip isSubsetOf = (⊇)
+# \x y -> (x /= y) && not (isProperSubsetOf x y) = (⊈)
+# \x y -> (x /= y) && not (isProperSubsetOf y x) = (⊉)
+# isProperSubsetOf = (⊂)
+# flip isProperSubsetOf = (⊃)
+# \x y -> not (isProperSubsetOf x y) = (⊄)
+# \x y -> not (isProperSubsetOf y x) = (⊅)
+
+
+# From the Data.IntMap.Lazy.Unicode module (reexported by the Data.IntMap.Unicode module)
+# member = (∈)
+# flip member = (∋)
+# notMember = (∉)
+# flip notMember = (∌)
+# empty = (∅)
+# union = (∪)
+# difference = (∖)
+# \x y -> union (difference x y) (difference y x) = (∆)
+# intersection = (∩)
+
+
+# From the Data.IntMap.Strict.Unicode module
+# member = (∈)
+# flip member = (∋)
+# notMember = (∉)
+# flip notMember = (∌)
+# empty = (∅)
+# union = (∪)
+# difference = (∖)
+# \x y -> union (difference x y) (difference y x) = (∆)
+# intersection = (∩)
