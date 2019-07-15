@@ -20,7 +20,7 @@ plugins=(git)
 
 # User configuration
 
-export PATH="/home/viomi/bin:/usr/sbin:/sbin:/usr/local/bin:/usr/bin:/bin:/usr/local/games:/usr/games"
+export PATH="$HOME/bin:/usr/sbin:/sbin:/usr/local/bin:/usr/bin:/bin:/usr/local/games:/usr/games"
 # export MANPATH="/usr/local/man:$MANPATH"
 
 source $ZSH/oh-my-zsh.sh
@@ -47,4 +47,14 @@ alias vim="nvim"
 alias vi="nvim"
 alias v="nvim"
 
-alias ls="ls -A"
+unalias ls >/dev/null 2>&1
+ls()
+{
+    command ls --color=auto -FA "$@"
+}
+
+unalias cd >/dev/null 2>&1
+cd()
+{
+    builtin cd "$@" && command ls --color=auto -FA
+}
