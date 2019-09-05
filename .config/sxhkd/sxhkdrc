@@ -37,6 +37,9 @@ super + y
 # swap the current node and the biggest node
 super + g
 	bspc node -s biggest
+	
+super + p
+	scrot -s
 
 #
 # state/flags
@@ -52,37 +55,11 @@ super + ctrl + {x,y,z}
 
 #
 # focus/swap
-#
 
-# focus the node in the given direction
-super + {_,shift + }{Left,Down,Up,Right}
-	bspc node -{f,s} {west,south,north,east}
+# focus / move to next workspace
+super + {_, shift +}{_, alt +} {1-3}
+	sh workspace.sh {false,true} {false,true} {1-3}
 
-# focus the node for the given path jump
-super + {p,b,comma,period}
-	bspc node -f @{parent,brother,first,second}
-
-# focus the next/previous node
-super + {_,shift + }c
-	bspc node -f {next,prev}
-
-# focus the next/previous desktop
-super + bracket{left,right}
-	bspc desktop -f {prev,next}
-
-# focus the last node/desktop
-super + {grave,Tab}
-	bspc {node,desktop} -f last
-
-# focus the older or newer node in the focus history
-super + {o,i}
-	bspc wm -h off; \
-	bspc node {older,newer} -f; \
-	bspc wm -h on
-
-# focus or send to the given desktop
-super + shift + {1-9,0}
-    id=$(bspc query -N -n); bspc node -d ^{1-9,10}; bspc node -f ${id}
 
 #
 # preselect
