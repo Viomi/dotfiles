@@ -20,9 +20,6 @@ plugins=(git)
 
 # User configuration
 
-export PATH="$HOME/bin:/usr/sbin:/sbin:/usr/local/bin:/usr/bin:/bin:/usr/local/games:/usr/games"
-# export MANPATH="/usr/local/man:$MANPATH"
-
 source $ZSH/oh-my-zsh.sh
 
 # Preferred editor for local and remote sessions
@@ -45,7 +42,6 @@ alias pacpurge="sudo pacman -Sc"
 
 alias vim="nvim"
 alias vi="nvim"
-alias v="nvim"
 
 unalias ls >/dev/null 2>&1
 ls()
