@@ -1,5 +1,7 @@
 # Path to your oh-my-zsh installation.
-export ZSH=$HOME/.oh-my-zsh
+export ZSH=/usr/share/oh-my-zsh
+
+ZSH_CUSTOM=$HOME/.oh-my-zsh/custom
 
 # Set name of the theme to load.
 # Look in ~/.oh-my-zsh/themes/
@@ -39,9 +41,6 @@ alias pacremove="sudo pacman -R"
 alias pacremovedeps="sudo pacman -Rs"
 alias pacforceremove="sudo pacman -Rsc"
 alias pacpurge="sudo pacman -Sc"
-
-alias vim="nvim"
-alias vi="nvim"
 
 unalias ls >/dev/null 2>&1
 ls()
